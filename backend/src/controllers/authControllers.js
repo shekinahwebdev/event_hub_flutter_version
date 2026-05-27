@@ -20,7 +20,7 @@ const buildRefreshToken = (userId, email) =>
   });
 
 // register user logic
-const register = async (req, res) => {
+const signUp = async (req, res) => {
   try {
     // retrieve user details from request
     const { name, email, password } = req.body;
@@ -159,4 +159,4 @@ const refresh = async (req, res) => {
   }
 };
 
-module.exports = { login, register, refresh };
+module.exports = { login, signUp, refresh };
