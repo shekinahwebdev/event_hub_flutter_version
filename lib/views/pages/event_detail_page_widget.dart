@@ -1,4 +1,5 @@
 import 'package:event_hub/views/pages/book_event_page_widget.dart';
+import 'package:event_hub/views/pages/confirm_event_book_page.dart';
 import 'package:event_hub/widgets/custom_info_row.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,6 @@ class EventDetailPage extends StatelessWidget {
     const Color brandDarkBlue = Color.fromARGB(255, 16, 61, 101);
     const Color textGrey = Color.fromARGB(255, 74, 85, 104);
 
-    // Mock data based on your Prisma context
     const String title = "Women in FlutterFlow";
     const String description =
         "Women in FlutterFlow is a community built up to help ladies with no coding experience to build up projects using no code.";
@@ -18,7 +18,7 @@ class EventDetailPage extends StatelessWidget {
     const int totalSlots = 100;
     const int spotsLeft = 1;
     const int bookedSlots = totalSlots - spotsLeft;
-    const double occupancyPercent = bookedSlots / totalSlots; // 0.99 for 99%
+    const double occupancyPercent = bookedSlots / totalSlots;
 
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
@@ -208,7 +208,8 @@ class EventDetailPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const BookEventPage(),
+                                  builder: (context) =>
+                                      const ConfirmEventBookPage(),
                                 ),
                               );
                             },

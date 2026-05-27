@@ -1,4 +1,4 @@
-import 'package:event_hub/views/pages/book_event_page_widget.dart';
+import 'package:event_hub/views/pages/confirm_event_book_page.dart';
 import 'package:event_hub/views/pages/event_detail_page_widget.dart';
 import 'package:event_hub/widgets/event_card.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +63,7 @@ class EventsPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return BookEventPage();
+                      return ConfirmEventBookPage();
                     },
                   ),
                 );

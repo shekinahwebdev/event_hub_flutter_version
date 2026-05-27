@@ -1,3 +1,4 @@
+import 'package:event_hub/views/pages/book_event_page_widget.dart';
 import 'package:event_hub/widgets/custom_check_item.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,17 @@ class _ConfirmEventBookPageState extends State<ConfirmEventBookPage> {
   @override
   Widget build(BuildContext context) {
     const Color brandDarkBlue = Color.fromARGB(255, 16, 61, 101);
+
+    if (_pageState == "loading") {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator(color: brandDarkBlue)),
+      );
+    }
+
+    if (_pageState == "success") {
+      return BookEventPage();
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(

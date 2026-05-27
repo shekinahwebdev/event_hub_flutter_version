@@ -54,6 +54,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 style: TextStyle(fontSize: 16, color: textGrey, height: 1.4),
               ),
               const SizedBox(height: 36),
+              CustomFieldLabel(labelText: "Full Name"),
+              TextFormField(
+                keyboardType: TextInputType.name,
+                decoration: cusmtomInputDecoration(
+                  hintText: "Patricia Shiloh Kanneh",
+                  prefixIcon: Icons.mail_outline,
+                ),
+              ),
+              const SizedBox(height: 24),
+
               CustomFieldLabel(labelText: "Email Address"),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
