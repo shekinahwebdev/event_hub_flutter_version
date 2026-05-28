@@ -3,6 +3,7 @@ const cor = require("cors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const { json } = require("node:stream/consumers");
+const authRoutes = require("./routes/authRoutes");
 const prisma = require("./db");
 
 const port = process.env.PORT || 5003;
@@ -17,9 +18,11 @@ app.get("/api/health", (req, res) => {
   res.status(200).json({ message: "Server is running successfully" });
 });
 
+app.use("/api/auth", authRoutes);
+
 // Implement fallback route for missing endpoints
 app.use((req, res) => {
-  res.status(404).json({ message: "Route Not Found!" });
+  res.status(404).json({ message: "Route Not Found!!" });
 });
 
 // create server

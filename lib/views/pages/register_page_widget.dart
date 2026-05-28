@@ -60,7 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Color.fromARGB(255, 16, 61, 101),
           content: Text(error.toString().replaceFirst('Exception: ', '')),
         ),
       );
@@ -134,8 +134,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   validator: (val) {
                     if (val == null || val.isEmpty) return "Email is required";
-                    if (!val.contains('@'))
+                    if (!val.contains('@')) {
                       return "Enter a valid email address";
+                    }
                     return null;
                   },
                 ),
@@ -194,8 +195,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   validator: (val) {
-                    if (val != _passwordController.text)
+                    if (val != _passwordController.text) {
                       return "Passwords do not match";
+                    }
                     return null;
                   },
                 ),
@@ -217,7 +219,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             height: 20,
                             width: 20,
                             child: CircularProgressIndicator(
-                              color: Colors.white,
+                              color: brandDarkBlue,
                               strokeWidth: 2,
                             ),
                           )

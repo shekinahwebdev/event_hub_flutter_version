@@ -1,4 +1,3 @@
-const prisma = require("../db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const prisma = require("../db");
@@ -33,10 +32,10 @@ const signUp = async (req, res) => {
     }
 
     // normalise the email
-    const actualEmail = email.toLowercase();
+    const actualEmail = email.toLowerCase();
 
     // checking for existing user
-    const existingUser = await prisma.user.findUnique({
+    const existingUser = await prisma.users.findUnique({
       where: { email: actualEmail },
     });
     if (existingUser) {
@@ -46,8 +45,9 @@ const signUp = async (req, res) => {
     // hash the password
     const hashPassword = await bcrypt.hash(password, 10);
 
-    const user = await prisma.user.create({
+    const user = await prisma.users.create({
       data: {
+        name: name,
         email: email.toLowerCase(),
         password: hashPassword,
       },
@@ -68,7 +68,7 @@ const signUp = async (req, res) => {
     return res.status(201).json({
       message: "Account created successfully",
       accessToken,
-      user: { id: user.id, email: user.email },
+      user: { id: user.id, name: user.name, email: user.email },
     });
   } catch (error) {
     return res
@@ -81,19 +81,19 @@ const signUp = async (req, res) => {
 const login = async (req, res) => {
   try {
     // retrieve user details from request
-    const { name, email, password } = req.body;
+    const { email, password } = req.body;
 
     // check for missing user details
-    if (!name || !email || !password) {
+    if (!email || !password) {
       return res
         .status(400)
         .json({ message: "email,name and password are required" });
     }
 
     // normalise the email
-    const actualEmail = email.toLowercase();
+    const actualEmail = email.toLowerCase();
 
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: { email: actualEmail },
     });
 

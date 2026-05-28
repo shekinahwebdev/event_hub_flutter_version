@@ -39,7 +39,6 @@ class UserService {
   static Future<Map<String, dynamic>> login({
     required String email,
     required String password,
-    required String otpChannel,
   }) async {
     final response = await http.post(
       Uri.parse('$_baseUrl/auth/login'),
